@@ -12,7 +12,7 @@ if [ ! -d "$HOME/SillyTavern" ]; then
 fi
 
 # 下载 menu.sh 到 $HOME 目录
-curl -o "$HOME/menu.sh" https://raw.githubusercontent.com/Yuhuan-Dev/Android-Termux-SillyTavern/main/menu.sh
+curl -o "$HOME/menu.sh" https://raw.githubusercontent.com/Yuhuan-Dev/SillyTavern-Termux/main/menu.sh
 chmod +x "$HOME/menu.sh"
 
 # 设置每次打开 Termux 自动运行 menu.sh
