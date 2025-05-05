@@ -8,7 +8,7 @@ pkg install -y nodejs-lts
 
 # 克隆 SillyTavern 仓库（如已存在则跳过）
 if [ ! -d "$HOME/SillyTavern" ]; then
-    git clone https://github.com/SillyTavern/SillyTavern "$HOME/SillyTavern"
+    git clone https://dgithub.xyz/SillyTavern/SillyTavern "$HOME/SillyTavern"
 fi
 
 # 下载 menu.sh 到 $HOME 目录
