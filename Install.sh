@@ -1,10 +1,10 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# 自动更新和安装依赖
-pkg update -y
-pkg upgrade -y
-pkg install -y git
-pkg install -y nodejs-lts
+# 检查 nodejs 是否已安装，如未安装则安装
+if ! command -v node >/dev/null 2>&1; then
+    apt update -y
+    apt install -y nodejs-lts
+fi
 
 # 克隆 SillyTavern 仓库（如已存在则跳过）
 if [ ! -d "$HOME/SillyTavern" ]; then
@@ -23,6 +23,12 @@ fi
 if ! grep -q 'bash \$HOME/menu.sh' "$PROFILE_FILE" && ! grep -q 'bash $HOME/menu.sh' "$PROFILE_FILE"; then
     echo 'bash $HOME/menu.sh' >> "$PROFILE_FILE"
 fi
+
+# 进入 SillyTavern 目录，设置npm源，环境变量并安装依赖
+cd "$HOME/SillyTavern" \
+  && npm config set registry http://mirrors.cloud.tencent.com/npm/ \
+  && export NODE_ENV=production \
+  && npm i --no-audit --no-fund --loglevel=error --no-progress --omit=dev
 
 # 直接运行菜单
 bash "$HOME/menu.sh"
